@@ -1,0 +1,1171 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+
+
+
+    <title> Diwali Lights</title>
+
+
+
+
+    <style>
+        html,
+        body {
+            background: #111;
+            margin: 0;
+            width: 100%;
+        }
+
+        h2 {
+            color: #fff;
+            position: relative;
+            margin: 150px;
+            text-align: center;
+            letter-spacing: 0.2em;
+            font-size: 4em;
+            text-shadow: 0px 0px 8px rgba(255, 65, 185, 1);
+            font-family: 'Charmonman', cursive;
+        }
+
+        #wire {
+            text-align: center;
+            white-space: nowrap;
+            position: absolute;
+            padding: 0;
+            width: 100%;
+            top: -80px;
+            border-bottom: 3px solid #222;
+            height: 100px;
+        }
+
+        #wire li {
+            position: relative;
+            list-style: none;
+            margin: 0 15px;
+            padding: 0;
+            display: inline-block;
+            width: 15px;
+            height: 30px;
+            border-radius: 50%;
+            top: 102px;
+            background: #fff;
+            /* animation stuff here*/
+            animation-name: even-flash;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-fill-mode: both;
+        }
+
+        #wire li:nth-child(odd) {
+            animation-name: odd-flash;
+        }
+
+        #wire li:before {
+            content: "";
+            position: absolute;
+            width: 14px;
+            height: 10px;
+            border-radius: 4px;
+            top: -5px;
+            left: 0;
+            background: #444;
+        }
+
+
+        @keyframes even-flash {
+
+            0%,
+            100% {
+                background: rgba(255, 230, 65, 1);
+                box-shadow: 0px 2px 20px 4px rgba(255, 230, 65, 1);
+            }
+
+            50% {
+
+                background: rgba(255, 230, 65, 0.5);
+                box-shadow: 0px 2px 20px 4px rgba(255, 230, 65, 0.3);
+            }
+        }
+
+
+
+        @keyframes odd-flash {
+            50% {
+                background: rgba(255, 65, 185, 1);
+                box-shadow: 0px 2px 20px 4px rgba(255, 65, 185, 1);
+            }
+
+            0%,
+            100% {
+
+                background: rgba(255, 65, 185, 0.5);
+                box-shadow: 0px 2px 20px 4px rgba(255, 65, 185, 0.3);
+            }
+        }
+
+
+        @keyframes animate {
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-25%);
+            }
+
+            50% {
+                transform: translateX(-50%);
+            }
+
+            75% {
+                transform: translateX(-25%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .diya {
+            position: relative;
+            width: 160px;
+            height: 80px;
+            background-color: #b11c1c;
+            border-bottom-right-radius: 80px;
+            border-bottom-left-radius: 80px;
+            margin: auto;
+        }
+
+        .diya::after {
+            content: "";
+            position: absolute;
+            top: calc(-50% - 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 0 0 0 5px #eff000, 0 0 0 10px rgba(255, 255, 255, 0.2);
+            filter: blur(5px);
+            animation: animate 2s linear infinite;
+        }
+
+        .diya:before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            width: 100%;
+            height: 40px;
+            background-color: #fdff60;
+            border-radius: 50%;
+            border: 10px solid #9e0303;
+            box-sizing: border-box;
+        }
+
+        .diya-group {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            /* max-width: 900px; */
+
+            margin: auto;
+            margin-top: 10rem;
+        }
+
+        .message {
+            color: #fff;
+            font-size: 2rem;
+        }
+
+        .stars-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            color: rgba(254, 240, 138, 0.5);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 6rem 1rem;
+            text-align: center;
+        }
+
+        .title {
+            font-size: clamp(0.5rem, 5vw, 3.75rem);
+            font-weight: bold;
+            color: rgb(254, 249, 195);
+            margin-bottom: 1.5rem;
+            margin-top: 0px;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: rgba(254, 249, 195, 0.8);
+            margin-bottom: 3rem;
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            max-width: 48rem;
+            margin: 0 auto 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .countdown-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+        }
+
+        .countdown-card {
+            background: rgba(154, 52, 18, 0.5);
+            border: 1px solid rgb(194, 65, 12);
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .countdown-value {
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: rgb(254, 249, 195);
+        }
+
+        .countdown-label {
+            color: rgba(254, 249, 195, 0.8);
+            text-transform: capitalize;
+        }
+
+        .button {
+            background: rgb(202, 138, 4);
+            color: white;
+            border: none;
+            padding: 1.5rem 2rem;
+            font-size: 1.125rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .button:hover {
+            background: rgb(161, 98, 7);
+        }
+
+        .diyas-grid {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .diyas-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .diya-card {
+            background: rgba(154, 52, 18, 0.3);
+            border: 1px solid rgb(194, 65, 12);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .diya-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* .diya {
+            width: 6rem;
+            height: 6rem;
+            margin: 0 auto 1rem;
+            position: relative;
+        } */
+
+        .diya-base {
+            position: absolute;
+            inset: 0;
+            background: rgb(234, 179, 8);
+            border-radius: 9999px;
+            animation: pulse 2s infinite;
+        }
+
+        .diya-middle {
+            position: absolute;
+            inset: 0.5rem;
+            background: rgb(234, 88, 12);
+            border-radius: 9999px;
+        }
+
+        .diya-flame {
+            position: absolute;
+            inset: 1rem;
+            background: rgb(239, 68, 68);
+            border-radius: 9999px;
+            animation: flame 2s ease-in-out infinite;
+        }
+
+        .diya-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: rgb(254, 249, 195);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .diya-text {
+            color: rgba(254, 249, 195, 0.8);
+            text-align: center;
+        }
+
+        .message-card {
+            max-width: 48rem;
+            margin: 0 auto;
+            padding: 6rem 1rem;
+            text-align: center;
+        }
+
+        .message-content {
+            background: linear-gradient(to right, rgb(154, 52, 18), rgb(153, 27, 27));
+            border: 1px solid rgb(194, 65, 12);
+            border-radius: 0.5rem;
+            padding: 2rem;
+        }
+
+        .message-title {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: bold;
+            color: rgb(254, 249, 195);
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+        }
+
+        .message-text {
+            font-size: 1.125rem;
+            color: rgba(254, 249, 195, 0.8);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes flame {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.8;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .desk,
+        .desk-hold {
+            width: 600px;
+            height: 238px;
+            background: #111;
+            margin: 0 auto;
+            margin-top: 55px;
+        }
+
+        .desk {
+            border-bottom: 3px solid #0077ee;
+        }
+
+        .surface {
+            width: 500px;
+            height: 12px;
+            border-top: 3px solid #0077ee;
+            border-bottom: 3px solid #0077ee;
+            margin: 0 auto;
+        }
+
+        .storage {
+            width: 130px;
+            height: 200px;
+            background: #fff;
+            border-left: 3px solid #0077ee;
+            border-right: 3px solid #0077ee;
+            border-bottom: 3px solid #0077ee;
+            float: left;
+            margin-left: 70px;
+        }
+
+        .storage:nth-child(2) {
+            float: right;
+            margin-right: 70px;
+        }
+
+        .draw {
+            width: 100px;
+            height: 40px;
+            border: 3px solid #0077ee;
+            margin: 0 auto;
+            margin-top: 16px;
+        }
+
+        .handle {
+            width: 20px;
+            height: 3px;
+            background: #0077ee;
+            margin: 0 auto;
+            margin-top: 20px;
+            border-radius: 500px;
+        }
+
+        .feet {
+            width: 106px;
+            height: 20px;
+            margin: 0 auto;
+            margin-top: 17px;
+        }
+
+        .foot {
+            width: 20px;
+            height: 20px;
+            border-left: 3px solid #0077ee;
+            border-right: 3px solid #0077ee;
+            float: left;
+        }
+
+        .foot:nth-child(2) {
+            float: right;
+        }
+
+        .shelf {
+            width: 300px;
+            height: 5px;
+            border: 3px solid #0077ee;
+            margin: 0 auto;
+        }
+
+        .nail {
+            width: 10px;
+            height: 5px;
+            border: 3px solid #0077ee;
+            border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+            margin-top: 5px;
+        }
+
+        .nail:nth-child(1) {
+            float: left;
+            margin-left: 20px;
+        }
+
+        .nail:nth-child(2) {
+            float: right;
+            margin-right: 20px;
+        }
+
+        .desk-pc {
+            width: 500px;
+            height: 200px;
+            margin: 106px auto;
+            overflow: hidden;
+        }
+
+        .pc {
+            width: 206px;
+            height: 200px;
+            margin-left: 200px;
+            z-index: -3;
+        }
+
+        .lap {
+            width: 170px;
+            height: 90px;
+            margin-left: 150px;
+            z-index: 3;
+            margin-top: -116px;
+        }
+
+        .pc-screen {
+            width: 200px;
+            height: 130px;
+            line-height: 130px;
+            text-align: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 30px;
+            border-radius: 10px;
+            border: 3px solid #0077ee;
+            background: #0077ee;
+            box-shadow: inset 0px 0px 0px 10px #fff;
+        }
+
+        .pc-base {
+            width: 150px;
+            height: 10px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border: 3px solid #0077ee;
+            margin: 0 auto;
+        }
+
+        .pc-neck {
+            width: 70px;
+            height: 30px;
+            border: 3px solid #0077ee;
+            margin: 0 auto;
+            margin-bottom: -3px;
+            margin-top: -3px;
+        }
+
+        .lap-screen {
+            width: 130px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            color: #fff;
+            font-size: 15px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border: 3px solid #0077ee;
+            margin: 0 auto;
+            box-shadow: inset 0px 0px 0px 10px #fff;
+            background: #0077ee;
+            margin-bottom: -3px;
+            font-weight: 400;
+        }
+
+        .lap-base {
+            width: 160px;
+            height: 7px;
+            border: 3px solid #0077ee;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            margin-bottom: -3px;
+            background: #fff;
+        }
+
+        .lap-lip {
+            margin: 0 auto;
+            width: 30px;
+            height: 2px;
+            border: 3px solid #0077ee;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-top: -3px;
+        }
+
+        .coffee {
+            width: 100px;
+            height: 100px;
+            margin-top: -97px;
+            margin-left: 20px;
+            overflow: hidden;
+        }
+
+        .book {
+            width: 70px;
+            height: 15px;
+            border: 3px solid #0077ee;
+            margin: 0 auto;
+            overflow: hidden;
+            border-left: 0;
+            border-top-right-radius: 500px;
+            border-bottom-right-radius: 500px;
+        }
+
+        .ball {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 3px solid #0077ee;
+            margin-top: -3px;
+            margin-left: -13px;
+        }
+
+        .mug {
+            width: 70px;
+            height: 63px;
+            margin: 0px auto;
+            margin-top: 20px;
+        }
+
+        .mug-a {
+            width: 50px;
+            height: 30px;
+            border-bottom-left-radius: 500px;
+            border-bottom-right-radius: 500px;
+            border: 3px solid #0077ee;
+            margin: 0 auto;
+            background: #fff;
+        }
+
+        .mug-ah {
+            width: 15px;
+            height: 20px;
+            border-bottom-left-radius: 500px;
+            border: 3px solid #0077ee;
+            margin-left: -3px;
+            margin-top: -36px;
+            border-right: 0;
+        }
+
+        .steam {
+            width: 50px;
+            height: 30px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .holds {
+            width: 5px;
+            height: 30px;
+            float: left;
+            margin-left: 8px;
+        }
+
+        .holds:nth-child(1) .line {
+            -webkit-animation: steam 2s ease infinite .0s;
+        }
+
+        .holds:nth-child(2) .line {
+            -webkit-animation: steam 2s ease infinite .3s;
+        }
+
+        .holds:nth-child(3) .line {
+            -webkit-animation: steam 2s ease infinite .6s;
+        }
+
+        .line {
+            width: 3px;
+            height: 20px;
+            float: left;
+            background: #0077ee;
+            border-radius: 500px;
+            position: absolute;
+            bottom: 3px;
+        }
+
+        @-webkit-keyframes steam {
+            0% {
+                height: 10px;
+            }
+
+            50% {
+                height: 27px;
+            }
+
+            100% {
+                height: 10px;
+            }
+        }
+
+        .photo {
+            width: 130px;
+            height: 130px;
+            margin-bottom: -130px;
+            transform: translateX(20px) translateY(0px);
+        }
+
+        .photo-top {
+            width: 130px;
+            height: 20px;
+        }
+
+        .photo-tri {
+            width: 0;
+            border-bottom: 20px solid #0077ee;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            margin: 0 auto;
+        }
+
+        .photo-tri1 {
+            width: 0;
+            border-bottom: 10px solid #fff;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            margin: -10px auto;
+        }
+
+        .photo-frame {
+            width: 80px;
+            height: 80px;
+            background: URL('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjE8VDBj7qS2xT-eb1rIs4WYoTbhJayVaDLA&s');
+            background-size: 100%;
+            box-shadow: inset 0px 0px 0px 4px #fff;
+            margin: 0 auto;
+            border: 3px solid #0077ee;
+            border-radius: 5px;
+        }
+
+        .top-ball,
+        .bot-ball {
+            width: 80px;
+            height: 10px;
+            margin: 0 auto;
+        }
+
+        .bot-ball {
+            margin-top: 64px;
+        }
+
+        .top-ball {
+            margin-top: -2px;
+        }
+
+        .balls {
+            width: 10px;
+            height: 10px;
+            background: #0077ee;
+            border-radius: 50%;
+            float: left;
+            margin-left: -2px;
+        }
+
+        .balls:nth-child(2) {
+            float: right;
+            margin-right: -2px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #0077ee;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #0077ee;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer b {
+            font-size: 12px;
+        }
+
+        /* Profile Styles */
+        .links-and-stats {
+            background: #0077ee !important;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .diya-group {
+                max-width: 100%;
+                /* Remove the max-width restriction */
+            }
+
+            .diyas-grid {
+                grid-template-columns: 1fr;
+            }
+            .diya{
+                width: 68px;
+                height: 43px;
+            }
+            .diya::after{
+                width: 14px;
+                height: 33px;
+            }
+            .subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 3rem;
+}
+.title-group{
+    text-align: center;
+}
+
+h2{
+    margin: 0px;
+}
+        }
+    
+    </style>
+
+
+
+
+
+</head>
+
+<body translate="no">
+
+
+
+
+<!--     <ul id="wire">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+
+    </ul> -->
+
+    <div class="diya-group">
+        <div>
+            <div class="diya"></div>
+        </div>
+        <div class="title-group">
+            <h1 class="title">
+                Happy Diwali ✨
+            </h1>
+            <p class="subtitle">
+                Celebrate the Festival of Lights with joy and prosperity
+            </p>
+        </div>
+        <div>
+            <div class="diya"></div>
+        </div>
+    </div>
+
+    <div class="stars-container" id="starsContainer"></div>
+
+    <div class="hero">
+        <div class="hero-content">
+
+
+            <div class="countdown-grid">
+                <div class="countdown-card">
+                    <div class="countdown-value" id="days">0</div>
+                    <div class="countdown-label">days</div>
+                </div>
+                <div class="countdown-card">
+                    <div class="countdown-value" id="hours">0</div>
+                    <div class="countdown-label">hours</div>
+                </div>
+                <div class="countdown-card">
+                    <div class="countdown-value" id="minutes">0</div>
+                    <div class="countdown-label">minutes</div>
+                </div>
+                <div class="countdown-card">
+                    <div class="countdown-value" id="seconds">0</div>
+                    <div class="countdown-label">seconds</div>
+                </div>
+            </div>
+
+            <button class="button">Send Diwali Wishes</button>
+        </div>
+    </div>
+
+    <div class="diyas-grid">
+        <div class="diya-card">
+            <div class="diya">
+            </div>
+            <h3 class="diya-title">The Spirit of Diwali</h3>
+            <p class="diya-text">
+                Diwali is a celebration of light, joy, and togetherness. It symbolizes the victory of light over darkness and good over evil. Homes are adorned with radiant diyas, colorful rangolis, and vibrant decorations, as families come together to rejoice in the festive spirit.
+            </p>
+        </div>
+        <div class="diya-card">
+            <div class="diya">
+            </div>
+            <h3 class="diya-title">Festival of Lights and Prosperity</h3>
+            <p class="diya-text">
+                On this auspicious occasion, let the light of diyas guide you to peace and prosperity. Diwali brings blessings of wealth and success, as we welcome Lakshmi, the goddess of fortune, into our lives and homes. May this festival bring abundance and joy to you and your family.
+            </p>
+        </div>
+        <div class="diya-card">
+            <div class="diya">
+            </div>
+            <h3 class="diya-title">A Season of Togetherness and Gratitude</h3>
+            <p class="diya-text">
+                Diwali is a time to connect with loved ones, express gratitude, and share joy. As we gather with friends and family, we honor the bonds that bring warmth and harmony into our lives. This festive season, let's celebrate the blessings we have and share the joy of Diwali with all.</p>
+            </div>
+            </p>
+        </div>
+    </div>
+
+    <div class="message-card">
+        <div class="message-content">
+            <h2 class="message-title">
+                Happy Diwali!
+
+            </h2>
+            <p class="message-text">
+                In the spirit of Diwali, let us celebrate the strength of our teamwork and the contributions each of you
+                brings to our organization. May your homes be filled with joy, your hearts with love, and your lives
+                with prosperity. - Teach Team
+            </p>
+        </div>
+    </div>
+
+
+    <div class="gallery">
+
+        <div class="gallery-item">
+            <img src="./WhatsApp Image 2024-10-31 at 10.58.48 AM.jpeg" alt="Image 3">
+
+        </div>
+        <div class="gallery-item">
+            <img src="./WhatsApp Image 2024-10-31 at 10.58.47 AM.jpeg" alt="Image 2">
+
+        </div>
+        <div class="gallery-item">
+            <img src="./WhatsApp Image 2024-10-31 at 11.03.55 AM.jpeg" alt="Image 4">
+
+        </div>
+        <div class="gallery-item">
+            <img src="./WhatsApp Image 2024-10-31 at 10.46.10 AM.jpeg" alt="Image 1">
+
+        </div>
+
+
+    </div>
+
+<!-- 
+ <div>
+    <div class="desk-hold">
+        <div class="shelf">
+            <div class="nail"></div>
+            <div class="nail"></div>
+        </div>
+        <div class="photo" style="display: none;">
+            <div class="photo-top">
+                <div class="photo-tri"></div>
+                <div class="photo-tri1"></div>
+            </div>
+            <div class="photo-frame">
+                <div class="top-ball">
+                    <div class="balls"></div>
+                    <div class="balls"></div>
+                </div>
+                <div class="bot-ball">
+                    <div class="balls"></div>
+                    <div class="balls"></div>
+                </div>
+            </div>
+        </div>
+        <div class="desk-pc">
+            <div class="pc">
+                <div class="pc-screen">Wegofin</div>
+                <div class="pc-neck"></div>
+                <div class="pc-base"></div>
+            </div>
+            <div class="lap">
+                <div class="lap-screen">Tech Team</div>
+                <div class="lap-base">
+                    <div class="lap-lip"></div>
+                </div>
+            </div>
+            <div class="coffee">
+                <div class="mug">
+                    <div class="steam">
+                        <div class="holds">
+                            <div class="line"></div>
+                        </div>
+                        <div class="holds">
+                            <div class="line"></div>
+                        </div>
+                        <div class="holds">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                    <div class="mug-a">
+                    </div>
+                    <div class="mug-ah"></div>
+                </div>
+                <div class="book">
+                    <div class="ball"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="desk">
+        <div class="surface"></div>
+        <div class="storage">
+            <div class="draw">
+                <div class="handle"></div>
+            </div>
+            <div class="draw">
+                <div class="handle"></div>
+            </div>
+            <div class="draw">
+                <div class="handle"></div>
+            </div>
+            <div class="feet">
+                <div class="foot"></div>
+                <div class="foot"></div>
+            </div>
+        </div>
+        <div class="storage">
+            <div class="draw">
+                <div class="handle"></div>
+            </div>
+            <div class="draw">
+                <div class="handle"></div>
+            </div>
+            <div class="draw">
+                <div class="handle"></div>
+            </div>
+            <div class="feet">
+                <div class="foot"></div>
+                <div class="foot"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+         <a href="#">Created by</a><br> <b> Navin Solanki</b>
+    </div>
+ </div> -->
+
+
+
+<div style="display: flex;
+margin: auto;
+justify-content: center;">
+    <img src="./Screenshot 2024-10-31 195048.png" alt="" style="max-width: 100%;">
+</div>
+
+
+
+</body>
+<script>
+    // Create stars
+    const starsContainer = document.getElementById('starsContainer');
+    for (let i = 0; i < 20; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.innerHTML = '⭐';
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.animationDelay = `${Math.random() * 5}s`;
+        starsContainer.appendChild(star);
+    }
+
+    // Countdown timer
+    function updateCountdown() {
+        const diwaliDate = new Date('2024-11-01T00:00:00');
+        const now = new Date();
+        const difference = diwaliDate.getTime() - now.getTime();
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((difference / 1000 / 60) % 60);
+        const seconds = Math.floor((difference / 1000) % 60);
+
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+</script>
+
+</html>
